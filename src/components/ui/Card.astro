@@ -1,0 +1,30 @@
+---
+interface Props {
+  hover?: boolean;
+  padding?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const {
+  hover   = true,
+  padding = 'md',
+  class: cls = '',
+} = Astro.props;
+
+const paddings = {
+  sm: 'p-4',
+  md: 'p-6',
+  lg: 'p-8',
+};
+
+const classes = [
+  'bg-cream border border-border',
+  paddings[padding],
+  hover ? 'card-hover' : '',
+  cls,
+].join(' ');
+---
+
+<div class={classes} style="box-shadow: var(--shadow-card)">
+  <slot />
+</div>

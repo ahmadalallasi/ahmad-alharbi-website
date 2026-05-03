@@ -1,0 +1,45 @@
+---
+import { formatDate } from '../../lib/utils';
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  pubDate: Date | string;
+  category: string;
+  tags: string[];
+  featured?: boolean;
+}
+
+const { slug, title, description, pubDate, category, tags, featured } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  ecommerce: 'تجارة إلكترونية',
+  marketing: 'تسويق',
+  automation: 'أتمتة',
+  seo: 'SEO',
+  general: 'عام',
+};
+
+const dateStr = typeof pubDate === 'string' ? formatDate(new Date(pubDate)) : formatDate(pubDate);
+---
+
+<a href={`/blog/${slug}`} class="group block bg-cream border border-border hover:border-teal/30 transition-all duration-300 hover:-translate-y-1" style="box-shadow: var(--shadow-card)">
+  {featured && <div class="h-0.5 bg-teal w-full"></div>}
+  <div class="p-6">
+    <div class="flex items-center justify-between mb-3">
+      <span class="text-xs font-light tracking-widest text-teal uppercase">{categoryLabels[category] ?? category}</span>
+      <span class="text-xs font-light text-ink/40">{dateStr}</span>
+    </div>
+    <h3 class="text-lg font-light text-ink leading-snug mb-3 group-hover:text-navy transition-colors text-balance">{title}</h3>
+    <p class="text-sm text-ink/60 font-light leading-relaxed mb-5 line-clamp-2">{description}</p>
+    <div class="flex items-center justify-between pt-4 border-t border-border">
+      <div class="flex flex-wrap gap-1.5">
+        {tags.slice(0, 2).map(tag => (
+          <span class="text-xs px-2 py-0.5 bg-navy/5 text-navy/70 font-light">{tag}</span>
+        ))}
+      </div>
+      <span class="text-teal text-sm group-hover:-translate-x-1 transition-transform duration-200">←</span>
+    </div>
+  </div>
+</a>

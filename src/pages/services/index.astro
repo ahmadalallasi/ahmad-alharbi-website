@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionLabel from '../../components/ui/SectionLabel.astro';
+import Button from '../../components/ui/Button.astro';
+
+const services = [
+  {
+    id: 'marketing',
+    title: 'التسويق الإلكتروني',
+    description: 'إدارة منصات التواصل الاجتماعي، إعلانات مدفوعة، واستراتيجية محتوى تبني جمهوراً حقيقياً وتُحوّله لمبيعات.',
+    items: ['إدارة Meta Ads & Google Ads', 'استراتيجية محتوى وسوشيال', 'تصميم حملات تسويقية', 'تحليل أداء وتقارير شهرية'],
+    price: 'من 1,500 ر.س / شهر',
+  },
+  {
+    id: 'tech',
+    title: 'تطوير المواقع والتطبيقات',
+    description: 'مواقع احترافية سريعة ومُحسّنة لمحركات البحث، وتطبيقات ويب مخصصة تُحل مشاكل عملك الفعلية.',
+    items: ['مواقع شركات / متاجر', 'لوحات تحكم مخصصة', 'تطبيقات ويب بـ React', 'APIs و Backend بـ FastAPI'],
+    price: 'من 2,500 ر.س',
+  },
+  {
+    id: 'automation',
+    title: 'أتمتة الأعمال (n8n)',
+    description: 'ربط الأنظمة وأتمتة المهام المتكررة. وفّر ساعات يومياً وقلل الأخطاء البشرية.',
+    items: ['ردود واتساب الآلية', 'ربط المتجر بـ Google Sheets', 'تقارير يومية تلقائية', 'متابعة العملاء غير المكتملين'],
+    price: 'من 1,500 ر.س',
+  },
+  {
+    id: 'seo',
+    title: 'تحليل البيانات والـ SEO',
+    description: 'تحليل أداء موقعك، تحسين ظهوره في محركات البحث، وتقارير واضحة تساعدك على قرارات أذكى.',
+    items: ['تدقيق SEO فني وكامل', 'بحث الكلمات المفتاحية', 'تحسين Core Web Vitals', 'تقارير Google Analytics'],
+    price: 'من 800 ر.س',
+  },
+];
+---
+
+<BaseLayout
+  title="الخدمات"
+  description="خدمات التسويق الإلكتروني والتطوير التقني والأتمتة لـ التجار والمشاريع السعودية."
+  lang="ar"
+  dir="rtl"
+>
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="mb-12 max-w-2xl">
+        <SectionLabel label="الخدمات" />
+        <h1 class="text-4xl md:text-5xl font-light text-ink mt-6 leading-tight text-balance">
+          حلول رقمية متكاملة <span class="text-navy">بشخص واحد</span>
+        </h1>
+        <p class="mt-4 text-ink/60 font-light leading-relaxed">
+          خدمات تسويقية وتقنية مصمّمة للسوق السعودي — بأسعار شفّافة ونتائج قابلة للقياس.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+        {services.map(service => (
+          <div id={service.id} class="bg-cream p-8 scroll-mt-20">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <h2 class="text-xl font-light text-ink">{service.title}</h2>
+              <span class="text-xs text-teal font-light tracking-widest whitespace-nowrap mt-1">{service.price}</span>
+            </div>
+            <p class="text-sm text-ink/60 font-light leading-relaxed mb-6">
+              {service.description}
+            </p>
+            <ul class="space-y-2 mb-6">
+              {service.items.map(item => (
+                <li class="flex items-start gap-2 text-sm text-ink/70 font-light">
+                  <span class="text-teal mt-1">←</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="/contact" class="inline-flex items-center gap-2 text-sm font-light text-teal hover:gap-3 transition-all">
+              اطلب عرض سعر <span>←</span>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 text-center">
+        <Button href="/contact" variant="primary" size="lg">احجز استشارة مجانية</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

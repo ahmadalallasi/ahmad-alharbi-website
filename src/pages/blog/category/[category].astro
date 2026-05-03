@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleCard from '../../../components/blog/ArticleCard.astro';
+import SectionLabel from '../../../components/ui/SectionLabel.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const categories = [...new Set(posts.map(p => p.data.category))];
+  return categories.map(cat => ({ params: { category: cat }, props: { category: cat, posts: posts.filter(p => p.data.category === cat) } }));
+}
+
+const { category, posts } = Astro.props;
+const sorted = posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+const categoryLabels: Record<string, string> = { ecommerce: 'تجارة إلكترونية', marketing: 'تسويق', automation: 'أتمتة', seo: 'SEO', general: 'عام' };
+const label = categoryLabels[category] ?? category;
+---
+<BaseLayout title={`${label} — المدونة`} description={`مقالات في ${label}`} lang="ar" dir="rtl">
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="mb-12">
+        <SectionLabel label={label} />
+        <h1 class="text-4xl font-light text-ink mt-6">مقالات في <span class="text-navy">{label}</span></h1>
+        <a href="/blog" class="inline-block mt-3 text-sm text-teal font-light hover:underline">← كل المقالات</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+        {sorted.map(post => (<ArticleCard slug={post.id} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} category={post.data.category} tags={post.data.tags} featured={post.data.featured} />))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

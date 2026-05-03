@@ -1,0 +1,79 @@
+---
+import Container from '../ui/Container.astro';
+
+const currentYear = new Date().getFullYear();
+
+const services = [
+  { href: '/services#marketing', label: 'التسويق الإلكتروني' },
+  { href: '/services#tech',      label: 'التطوير التقني' },
+  { href: '/services#automation', label: 'الأتمتة (n8n)' },
+];
+
+const links = [
+  { href: '/portfolio', label: 'الأعمال' },
+  { href: '/blog',      label: 'المدونة' },
+  { href: '/about',     label: 'عني' },
+  { href: '/contact',   label: 'تواصل' },
+];
+---
+
+<footer class="bg-ink text-cream/70 mt-auto">
+  <Container>
+    <!-- Top section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 py-16 border-b border-cream/10">
+
+      <!-- Brand -->
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-3">
+          <svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,6 88,50 50,94 12,50" fill="#0A4D68"/>
+            <polyline points="50,6 88,50 50,94" fill="none" stroke="#088395" stroke-width="4" stroke-linejoin="miter"/>
+            <text x="50" y="78" text-anchor="middle" font-family="Arial,sans-serif" font-size="58" font-weight="300" fill="#FAFAF9">A</text>
+          </svg>
+          <div class="flex flex-col leading-none">
+            <span class="text-xs font-light tracking-widest text-cream" style="letter-spacing:0.2em">AHMAD ALHARBI</span>
+            <span class="text-[9px] font-light tracking-widest text-teal mt-0.5" style="letter-spacing:0.35em">MARKETING & TECHNOLOGY</span>
+          </div>
+        </div>
+        <p class="text-sm font-light leading-relaxed text-cream/70 max-w-xs">
+          مختص تسويق رقمي للتجار والمشاريع السعودية، مع خبرة في التطوير التقني وأتمتة الأعمال.
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div class="flex flex-col gap-4">
+        <h3 class="text-xs font-light tracking-widest text-cream/40 uppercase" style="letter-spacing:0.35em">الخدمات</h3>
+        <ul class="flex flex-col gap-2">
+          {services.map(s => (
+            <li>
+              <a href={s.href} class="text-sm font-light text-cream/80 hover:text-teal transition-colors">
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Links -->
+      <div class="flex flex-col gap-4">
+        <h3 class="text-xs font-light tracking-widest text-cream/40 uppercase" style="letter-spacing:0.35em">روابط</h3>
+        <ul class="flex flex-col gap-2">
+          {links.map(l => (
+            <li>
+              <a href={l.href} class="text-sm font-light text-cream/80 hover:text-teal transition-colors">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 text-xs font-light text-cream/30">
+      <span>© {currentYear} Ahmad Alharbi — جميع الحقوق محفوظة</span>
+      <span style="letter-spacing:0.2em">DIGITAL MARKETING SPECIALIST · KSA</span>
+    </div>
+  </Container>
+</footer>

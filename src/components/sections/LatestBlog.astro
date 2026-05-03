@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import SectionLabel from '../ui/SectionLabel.astro';
+import Button from '../ui/Button.astro';
+import { formatDate } from '../../lib/utils';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()).slice(0, 3);
+const categoryLabels: Record<string, string> = { ecommerce: 'تجارة إلكترونية', marketing: 'تسويق', automation: 'أتمتة', seo: 'SEO', general: 'عام' };
+---
+<section class="section-padding">
+  <div class="container-site">
+    <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+      <div>
+        <SectionLabel label="المدونة" />
+        <h2 class="text-4xl font-light text-ink mt-6">آخر المقالات</h2>
+      </div>
+      <Button href="/blog" variant="ghost">كل المقالات ←</Button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
+      {posts.map(post => (
+        <a href={`/blog/${post.id}`} class="group bg-cream p-8 hover:bg-navy/[0.02] transition-colors duration-300 block">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-light tracking-widest text-teal uppercase">{categoryLabels[post.data.category] ?? post.data.category}</span>
+            <span class="text-xs font-light text-ink/40">{formatDate(post.data.pubDate)}</span>
+          </div>
+          <h3 class="text-lg font-light text-ink leading-snug mb-4 group-hover:text-navy transition-colors text-balance">{post.data.title}</h3>
+          <p class="text-sm text-ink/60 font-light leading-relaxed mb-6">{post.data.description}</p>
+          <div class="flex items-center justify-between pt-4 border-t border-border">
+            <div class="flex flex-wrap gap-1.5">
+              {post.data.tags.slice(0, 2).map(tag => (<span class="text-xs px-2 py-0.5 bg-navy/5 text-navy/70 font-light">{tag}</span>))}
+            </div>
+            <span class="text-teal text-sm group-hover:-translate-x-1 transition-transform duration-200">←</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

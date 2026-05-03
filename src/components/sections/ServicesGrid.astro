@@ -1,0 +1,99 @@
+---
+import SectionLabel from '../ui/SectionLabel.astro';
+import Button from '../ui/Button.astro';
+
+const services = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+    title: 'التسويق الإلكتروني',
+    description: 'إدارة منصات التواصل الاجتماعي، إعلانات مدفوعة، واستراتيجية محتوى تبني جمهوراً حقيقياً وتُحوّله لمبيعات.',
+    tags: ['Meta Ads', 'Social Media', 'Content Strategy'],
+    href: '/services#marketing',
+    price: 'من 1,500 ر.س/شهر',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    title: 'تطوير المواقع والتطبيقات',
+    description: 'مواقع احترافية سريعة ومُحسّنة لمحركات البحث، وتطبيقات ويب مخصصة تُحل مشاكل عملك الفعلية.',
+    tags: ['Astro', 'React', 'FastAPI'],
+    href: '/services#tech',
+    price: 'من 2,500 ر.س',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+    title: 'أتمتة الأعمال',
+    description: 'ربط الأنظمة وأتمتة المهام المتكررة باستخدام n8n. وفّر ساعات يومياً وقلل الأخطاء البشرية.',
+    tags: ['n8n', 'Zapier', 'API Integration'],
+    href: '/services#automation',
+    price: 'من 1,500 ر.س',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+    title: 'تحليل البيانات والـ SEO',
+    description: 'تحليل أداء موقعك، تحسين ظهوره في محركات البحث، وتقارير واضحة تساعدك على قرارات أذكى.',
+    tags: ['SEO', 'Power BI', 'Analytics'],
+    href: '/services',
+    price: 'من 800 ر.س',
+  },
+];
+---
+
+<section class="section-padding">
+  <div class="container-site">
+
+    <div class="mb-12">
+      <SectionLabel label="الخدمات" />
+      <h2 class="text-4xl font-light text-ink mt-6 max-w-lg text-balance">
+        ما الذي يمكنني
+        <span class="text-navy">بناؤه لك؟</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+      {services.map((service) => (
+        <div class="bg-cream p-8 group hover:bg-navy/[0.02] transition-colors duration-300">
+
+          <!-- Icon -->
+          <div class="text-teal mb-6" set:html={service.icon} />
+
+          <!-- Title + Price -->
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <h3 class="text-xl font-normal text-ink">{service.title}</h3>
+            <span class="text-xs text-teal font-light tracking-widest whitespace-nowrap mt-1">{service.price}</span>
+          </div>
+
+          <!-- Description -->
+          <p class="text-sm text-ink/70 font-light leading-relaxed mb-6">
+            {service.description}
+          </p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            {service.tags.map(tag => (
+              <span class="text-xs px-2 py-1 border border-border text-ink/50 font-light tracking-wide">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <!-- CTA -->
+          <a
+            href={service.href}
+            class="inline-flex items-center gap-2 text-sm font-light text-teal group-hover:gap-3 transition-all duration-200"
+          >
+            اعرف أكثر
+            <span>←</span>
+          </a>
+
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <Button href="/services" variant="outline">
+        جميع الخدمات والأسعار
+      </Button>
+    </div>
+
+  </div>
+</section>

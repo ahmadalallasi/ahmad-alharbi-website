@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLabel from '../components/ui/SectionLabel.astro';
+import ContactForm from '../components/forms/ContactForm.tsx';
+---
+<BaseLayout title="تواصل معي — Ahmad Alharbi" description="تواصل مع أحمد لمناقشة مشروعك أو طلب عرض سعر." lang="ar" dir="rtl">
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+        <div>
+          <SectionLabel label="تواصل" />
+          <h1 class="text-4xl font-light text-ink mt-6 mb-4">هل لديك مشروع في ذهنك؟</h1>
+          <p class="text-ink/60 font-light leading-relaxed mb-10 max-w-md">
+            أرسل لي تفاصيل مشروعك وسأرد عليك خلال 24 ساعة بعرض سعر واضح.
+          </p>
+
+          <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 border border-teal/30 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#088395" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 10.82a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-ink/40 font-light tracking-widest mb-0.5">واتساب</div>
+                <a href="https://wa.me/9665XXXXXXXX" class="text-sm font-light text-navy hover:text-teal transition-colors">+966 5X XXX XXXX</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 border border-teal/30 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#088395" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-ink/40 font-light tracking-widest mb-0.5">البريد الإلكتروني</div>
+                <a href="mailto:ahmad@ahmadalallasi.com" class="text-sm font-light text-navy hover:text-teal transition-colors">ahmad@ahmadalallasi.com</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 border border-teal/30 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#088395" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-ink/40 font-light tracking-widest mb-0.5">وقت الرد</div>
+                <span class="text-sm font-light text-ink/70">خلال 24 ساعة</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <ContactForm client:load />
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

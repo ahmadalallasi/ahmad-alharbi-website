@@ -1,0 +1,25 @@
+---
+interface Props {
+  variant?: 'navy' | 'teal' | 'outline' | 'muted';
+  class?: string;
+}
+
+const { variant = 'teal', class: cls = '' } = Astro.props;
+
+const variants = {
+  navy:    'bg-navy text-cream',
+  teal:    'bg-teal/10 text-teal border border-teal/20',
+  outline: 'bg-transparent text-navy border border-navy/30',
+  muted:   'bg-gray-100 text-muted',
+};
+
+const classes = [
+  'inline-flex items-center px-3 py-1 text-xs font-light tracking-widest',
+  variants[variant],
+  cls,
+].join(' ');
+---
+
+<span class={classes}>
+  <slot />
+</span>

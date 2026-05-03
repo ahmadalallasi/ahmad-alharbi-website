@@ -1,0 +1,84 @@
+---
+import SectionLabel from '../ui/SectionLabel.astro';
+import Button from '../ui/Button.astro';
+
+const projects = [
+  {
+    category: 'تسويق إلكتروني',
+    title: 'نمو متجر إلكتروني سعودي',
+    description: 'بناء استراتيجية تسويق رقمية متكاملة أدت لزيادة المبيعات الشهرية ومضاعفة قاعدة المتابعين خلال 3 أشهر.',
+    results: ['+85% مبيعات', '+2000 متابع', '3 أشهر'],
+    color: 'bg-navy',
+    href: '/portfolio',
+  },
+  {
+    category: 'تطوير تقني',
+    title: 'تطبيق أتمتة عمليات داخلية',
+    description: 'تطوير نظام متكامل لأتمتة العمليات التشغيلية باستخدام FastAPI ون n8n، وفّر أكثر من 20 ساعة أسبوعياً.',
+    results: ['20 ساعة/أسبوع', 'صفر أخطاء بشرية', '6 أسابيع'],
+    color: 'bg-teal',
+    href: '/portfolio',
+  },
+  {
+    category: 'موقع + SEO',
+    title: 'موقع شركة خدمات',
+    description: 'تصميم وتطوير موقع احترافي مع تحسين SEO متكامل أوصل الموقع للصفحة الأولى في غضون شهرين.',
+    results: ['صفحة 1 جوجل', '+300% زيارات', 'شهرين'],
+    color: 'bg-ink',
+    href: '/portfolio',
+  },
+];
+---
+
+<section class="section-padding">
+  <div class="container-site">
+
+    <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
+      <div>
+        <SectionLabel label="أعمال مختارة" />
+        <h2 class="text-4xl font-light text-ink mt-6">
+          نتائج حقيقية،
+          <span class="text-navy"> ليس وعوداً</span>
+        </h2>
+      </div>
+      <Button href="/portfolio" variant="ghost">
+        كل الأعمال ←
+      </Button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
+      {projects.map((project) => (
+        <a href={project.href} class="group block bg-cream hover:bg-navy/[0.02] transition-colors duration-300">
+
+          <!-- Color bar top -->
+          <div class={`h-1 ${project.color}`}></div>
+
+          <div class="p-8">
+            <!-- Category -->
+            <span class="text-xs font-light tracking-widest text-teal uppercase">{project.category}</span>
+
+            <!-- Title -->
+            <h3 class="text-xl font-normal text-ink mt-3 mb-4 group-hover:text-navy transition-colors">
+              {project.title}
+            </h3>
+
+            <!-- Description -->
+            <p class="text-sm text-ink/60 font-light leading-relaxed mb-8">
+              {project.description}
+            </p>
+
+            <!-- Results -->
+            <div class="flex flex-wrap gap-3 pt-6 border-t border-border">
+              {project.results.map(result => (
+                <span class="text-xs font-light text-navy tracking-wide bg-navy/5 px-3 py-1">
+                  {result}
+                </span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

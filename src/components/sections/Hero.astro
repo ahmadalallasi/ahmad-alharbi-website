@@ -1,0 +1,74 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="relative overflow-hidden bg-cream min-h-[90vh] flex items-center">
+
+  <!-- Background geometric decoration -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <!-- Large diamond shape top-left (subtle) -->
+    <svg class="absolute -top-32 -right-32 opacity-[0.04] w-[600px] h-[600px]" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,2 98,50 50,98 2,50" fill="#0A4D68"/>
+    </svg>
+    <!-- Small diamond bottom-left -->
+    <svg class="absolute bottom-20 left-10 opacity-[0.06] w-[200px] h-[200px]" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,2 98,50 50,98 2,50" fill="none" stroke="#088395" stroke-width="3"/>
+    </svg>
+    <!-- Horizontal accent line -->
+    <div class="absolute top-1/2 left-0 w-24 h-px bg-teal opacity-30"></div>
+  </div>
+
+  <div class="container-site relative z-10 py-20">
+    <div class="max-w-3xl">
+
+      <!-- Pre-title label -->
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-8 h-px bg-teal"></div>
+        <span class="text-teal text-xs font-light tracking-widest uppercase">
+          Digital Marketing Specialist · KSA
+        </span>
+      </div>
+
+      <!-- Main headline -->
+      <h1 class="text-5xl md:text-7xl font-normal text-ink leading-none tracking-tight mb-6">
+        <span class="block">أبني معك</span>
+        <span class="block text-navy">حضوراً رقمياً</span>
+        <span class="block">يبيع بدلاً عنك</span>
+      </h1>
+
+      <!-- Sub-headline -->
+      <p class="text-lg md:text-xl text-ink/75 font-light leading-relaxed max-w-xl mb-10">
+        تسويق إلكتروني احترافي + تطوير تقني مخصص للتجار والمشاريع السعودية.
+        بدون وكالات، بدون تعقيد — خبير واحد مسؤول عن نتائجك.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap gap-4">
+        <Button href="/contact" variant="primary" size="lg">
+          احجز استشارة مجانية
+        </Button>
+        <Button href="/portfolio" variant="outline" size="lg">
+          شاهد أعمالي
+        </Button>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="mt-16 flex items-center gap-3 text-ink/40">
+        <div class="w-px h-12 bg-ink/20"></div>
+        <span class="text-xs font-light tracking-widest rotate-90 origin-left translate-x-6 -translate-y-3">
+          SCROLL
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Right side: Logo watermark large -->
+  <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block opacity-[0.035] pointer-events-none" aria-hidden="true">
+    <svg width="480" height="480" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,2 98,50 50,98 2,50" fill="#0A4D68"/>
+      <text x="50" y="72" text-anchor="middle" font-family="Arial,sans-serif" font-size="52" font-weight="200" fill="#0A4D68">A</text>
+    </svg>
+  </div>
+
+</section>

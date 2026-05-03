@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionLabel from '../../components/ui/SectionLabel.astro';
+import CategoryFilter from '../../components/blog/CategoryFilter.tsx';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const sorted = allPosts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+const categories = [
+  { value: 'all', label: 'الكل' },
+  { value: 'ecommerce', label: 'تجارة إلكترونية' },
+  { value: 'marketing', label: 'تسويق' },
+  { value: 'automation', label: 'أتمتة' },
+  { value: 'seo', label: 'SEO' },
+];
+const postsData = sorted.map(p => ({ slug: p.id, title: p.data.title, description: p.data.description, pubDate: p.data.pubDate.toISOString(), category: p.data.category, tags: p.data.tags, featured: p.data.featured }));
+---
+<BaseLayout title="المدونة — Ahmad Alharbi" description="مقالات في التسويق الإلكتروني والتطوير التقني." lang="ar" dir="rtl">
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="mb-12">
+        <SectionLabel label="المدونة" />
+        <h1 class="text-4xl font-light text-ink mt-6">مقالات وأفكار <span class="text-navy">تفيد عملك</span></h1>
+        <p class="mt-4 text-ink/60 font-light max-w-lg">محتوى عملي في التسويق الرقمي والأتمتة وتطوير المشاريع السعودية.</p>
+      </div>
+      <CategoryFilter client:load categories={categories} posts={postsData} />
+    </div>
+  </section>
+</BaseLayout>

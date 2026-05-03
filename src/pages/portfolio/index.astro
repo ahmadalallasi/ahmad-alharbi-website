@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionLabel from '../../components/ui/SectionLabel.astro';
+import Button from '../../components/ui/Button.astro';
+
+const projects = [
+  {
+    category: 'تسويق إلكتروني',
+    title: 'نمو متجر إلكتروني سعودي',
+    description: 'بناء استراتيجية تسويق رقمية متكاملة أدت لزيادة المبيعات الشهرية ومضاعفة قاعدة المتابعين خلال 3 أشهر.',
+    results: ['+85% مبيعات', '+2000 متابع', '3 أشهر'],
+    color: 'bg-navy',
+  },
+  {
+    category: 'تطوير تقني',
+    title: 'تطبيق أتمتة عمليات داخلية',
+    description: 'تطوير نظام متكامل لأتمتة العمليات التشغيلية باستخدام FastAPI و n8n، وفّر أكثر من 20 ساعة أسبوعياً.',
+    results: ['20 ساعة/أسبوع', 'صفر أخطاء بشرية', '6 أسابيع'],
+    color: 'bg-teal',
+  },
+  {
+    category: 'موقع + SEO',
+    title: 'موقع شركة خدمات',
+    description: 'تصميم وتطوير موقع احترافي مع تحسين SEO متكامل أوصل الموقع للصفحة الأولى في غضون شهرين.',
+    results: ['صفحة 1 جوجل', '+300% زيارات', 'شهرين'],
+    color: 'bg-ink',
+  },
+];
+---
+
+<BaseLayout
+  title="معرض الأعمال"
+  description="مشاريع منجزة في التسويق الإلكتروني والتطوير التقني للتجار والمشاريع السعودية."
+  lang="ar"
+  dir="rtl"
+>
+  <section class="section-padding">
+    <div class="container-site">
+      <div class="mb-12 max-w-2xl">
+        <SectionLabel label="الأعمال" />
+        <h1 class="text-4xl md:text-5xl font-light text-ink mt-6 leading-tight text-balance">
+          نتائج حقيقية، <span class="text-navy">ليس وعوداً</span>
+        </h1>
+        <p class="mt-4 text-ink/60 font-light leading-relaxed">
+          نماذج من مشاريع منجزة بأرقام قابلة للقياس.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+        {projects.map(project => (
+          <div class="bg-cream">
+            <div class={`h-1 ${project.color}`}></div>
+            <div class="p-8">
+              <span class="text-xs font-light tracking-widest text-teal uppercase">{project.category}</span>
+              <h3 class="text-xl font-light text-ink mt-3 mb-4">{project.title}</h3>
+              <p class="text-sm text-ink/60 font-light leading-relaxed mb-8">{project.description}</p>
+              <div class="flex flex-wrap gap-3 pt-6 border-t border-border">
+                {project.results.map(result => (
+                  <span class="text-xs font-light text-navy tracking-wide bg-navy/5 px-3 py-1">{result}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 bg-navy/[0.03] border border-navy/10 p-8 max-w-2xl mx-auto text-center">
+        <p class="text-sm font-light text-ink/70 mb-4">
+          هل تريد أن يكون مشروعك التالي ضمن هذا المعرض؟
+        </p>
+        <Button href="/contact" variant="primary">احجز استشارة مجانية</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

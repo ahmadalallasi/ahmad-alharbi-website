@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="تم الإرسال — Ahmad Alharbi" description="تم استلام رسالتك بنجاح." lang="ar" dir="rtl" noIndex={true}>
+  <section class="section-padding min-h-[70vh] flex items-center">
+    <div class="container-site text-center">
+      <div class="w-16 h-16 border border-teal/30 flex items-center justify-center mx-auto mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#088395" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h1 class="text-4xl font-light text-ink mb-4">تم الإرسال بنجاح</h1>
+      <p class="text-ink/60 font-light leading-relaxed mb-8 max-w-md mx-auto">
+        شكراً لك. سأراجع طلبك وأرد عليك خلال 24 ساعة على أقصى تقدير.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/" class="inline-flex items-center px-6 py-3 bg-navy text-cream text-sm font-light tracking-widest hover:bg-navy-dark transition-colors">
+          العودة للرئيسية
+        </a>
+        <a href="/blog" class="inline-flex items-center px-6 py-3 border border-border text-ink/70 text-sm font-light tracking-widest hover:border-navy/30 transition-colors">
+          اقرأ المدونة
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

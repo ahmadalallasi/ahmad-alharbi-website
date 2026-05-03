@@ -1,0 +1,81 @@
+---
+import SectionLabel from '../ui/SectionLabel.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'استشارة مجانية',
+    description: 'نجلس ونفهم مشروعك، أهدافك، والتحديات التي تواجهها. 30 دقيقة تُغيّر الاتجاه.',
+  },
+  {
+    number: '02',
+    title: 'عرض سعر واضح',
+    description: 'تفاصيل المشروع، التكلفة، المدة الزمنية — كل شيء مكتوب وواضح بدون مفاجآت.',
+  },
+  {
+    number: '03',
+    title: 'تنفيذ محكم',
+    description: 'أبدأ العمل فوراً بعد الاتفاق. تحديثات منتظمة وتواصل مستمر طوال المشروع.',
+  },
+  {
+    number: '04',
+    title: 'تسليم + دعم',
+    description: 'تسليم المشروع مع شرح كامل وفترة دعم مجانية للتأكد من رضاك التام.',
+  },
+];
+---
+
+<section class="section-padding bg-ink text-cream">
+  <div class="container-site">
+
+    <div class="mb-16">
+      <SectionLabel label="كيف أعمل" class="[--color-border:rgba(255,255,255,0.1)] [--color-teal:#05BFDB]" />
+      <h2 class="text-4xl font-light text-cream mt-6">
+        أربع خطوات بسيطة
+        <span class="text-teal-light"> لنتيجة مضمونة</span>
+      </h2>
+    </div>
+
+    <!-- Desktop: horizontal timeline -->
+    <div class="hidden md:grid grid-cols-4 gap-0 relative">
+      <!-- Connecting line -->
+      <div class="absolute top-8 right-[12.5%] left-[12.5%] h-px bg-cream/10"></div>
+
+      {steps.map((step) => (
+        <div class="relative flex flex-col items-center text-center px-6">
+
+          <!-- Step number circle -->
+          <div class="w-16 h-16 border border-cream/20 flex items-center justify-center mb-8 relative z-10 bg-ink">
+            <span class="text-xs font-light tracking-widest text-teal-light">{step.number}</span>
+          </div>
+
+          <h3 class="text-base font-light text-cream mb-3">{step.title}</h3>
+          <p class="text-sm text-cream/50 font-light leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Mobile: vertical -->
+    <div class="md:hidden flex flex-col gap-0">
+      {steps.map((step, i) => (
+        <div class="flex gap-6 pb-10 relative">
+          <!-- Vertical line -->
+          {i < steps.length - 1 && (
+            <div class="absolute right-[19px] top-16 bottom-0 w-px bg-cream/10"></div>
+          )}
+
+          <!-- Number -->
+          <div class="w-10 h-10 border border-cream/20 flex items-center justify-center flex-shrink-0">
+            <span class="text-xs font-light text-teal-light">{step.number}</span>
+          </div>
+
+          <div class="flex-1">
+            <h3 class="text-base font-light text-cream mb-2">{step.title}</h3>
+            <p class="text-sm text-cream/50 font-light leading-relaxed">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

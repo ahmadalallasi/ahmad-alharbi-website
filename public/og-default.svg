@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#080C10"/>
+  <polygon points="600,60 900,315 600,570 300,315" fill="#0A4D68" opacity="0.3"/>
+  <polyline points="600,60 900,315 600,570" fill="none" stroke="#088395" stroke-width="3"/>
+  <text x="600" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="80" font-weight="200" fill="#FAFAF9">A</text>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial,sans-serif" font-size="28" font-weight="200" fill="#FAFAF9" letter-spacing="8">AHMAD ALHARBI</text>
+  <text x="600" y="470" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="300" fill="#088395" letter-spacing="10">MARKETING &amp; TECHNOLOGY</text>
+</svg>

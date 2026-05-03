@@ -1,0 +1,69 @@
+---
+import Container from '../ui/Container.astro';
+import MobileMenu from './MobileMenu.tsx';
+
+const navLinks = [
+  { href: '/services', label: 'الخدمات' },
+  { href: '/portfolio', label: 'الأعمال' },
+  { href: '/blog',     label: 'المدونة' },
+  { href: '/about',    label: 'عني' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 inset-x-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-border">
+  <Container>
+    <nav class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group" aria-label="الرئيسية">
+        <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,6 88,50 50,94 12,50" fill="#0A4D68"/>
+          <polyline points="50,6 88,50 50,94" fill="none" stroke="#088395" stroke-width="4" stroke-linejoin="miter"/>
+          <text x="50" y="78" text-anchor="middle" font-family="Arial,sans-serif" font-size="58" font-weight="400" fill="#FAFAF9">A</text>
+        </svg>
+        <div class="hidden sm:flex flex-col leading-none">
+          <span class="text-xs font-light tracking-widest text-navy" style="letter-spacing:0.2em">AHMAD ALHARBI</span>
+          <span class="text-[9px] font-light tracking-widest text-teal mt-0.5" style="letter-spacing:0.35em">MARKETING & TECHNOLOGY</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="hidden md:flex items-center gap-8">
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class={[
+                'text-sm font-light tracking-widest transition-colors duration-200',
+                currentPath.startsWith(link.href)
+                  ? 'text-teal'
+                  : 'text-ink/80 hover:text-navy',
+              ].join(' ')}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA + Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href="/contact"
+          class="hidden md:inline-flex items-center px-5 py-2 text-xs font-light tracking-widest border border-navy text-navy hover:bg-navy hover:text-cream transition-all duration-200"
+        >
+          تواصل معي
+        </a>
+
+        <!-- Mobile Menu (React Island) -->
+        <MobileMenu links={navLinks} client:load />
+      </div>
+
+    </nav>
+  </Container>
+</header>
+
+<!-- Spacer for fixed header -->
+<div class="h-16"></div>
